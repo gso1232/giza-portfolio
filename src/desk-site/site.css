@@ -1,0 +1,84 @@
+/* The desk site: the rendered desk fills the screen (a WebGL canvas that keeps it
+   alive), the laptop's screen is a live page laid on its display, and the name
+   sits over the bare wall in dark type. */
+
+:root {
+  --ink: #1f1d1b;
+  --soft: rgba(31, 29, 27, 0.62);
+  --ease: cubic-bezier(0.22, 0.8, 0.2, 1);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; overflow: hidden; background: #eeeeec; color: var(--ink); font-family: Poppins, 'Segoe UI', system-ui, sans-serif; }
+
+canvas.stage { position: fixed; inset: 0; display: block; opacity: 0; transition: opacity 1.4s var(--ease); }
+body.ready canvas.stage { opacity: 1; }
+.screens { position: fixed; inset: 0; pointer-events: none; opacity: 0; transition: opacity 1.4s var(--ease) 0.3s; }
+body.ready .screens { opacity: 1; }
+
+.mark, .foot { position: fixed; opacity: 0; transition: opacity 0.9s var(--ease) 0.8s; }
+body.ready .mark, body.ready .foot { opacity: 1; }
+.mark { right: 4vw; top: 4.5vh; text-align: right; }   /* over the bare wall on the right: the shelf is on the left */
+.name { font-weight: 800; font-size: clamp(17px, 1.9vw, 32px); letter-spacing: 0.26em; }
+.roles { margin-top: 6px; font-weight: 500; font-size: clamp(10px, 0.72vw, 12px); letter-spacing: 0.1em; text-transform: uppercase; color: var(--soft); }
+.roles i { font-style: normal; margin: 0 0.5em; }
+.foot { right: 4vw; bottom: 3vh; }   /* the corner, clear of the laptop at any width */
+.hint { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--soft); }
+
+/* the laptop's screen: a 1728 x 1080 page, transformed onto the display */
+.laptop-screen { position: absolute; left: 0; top: 0; width: 1728px; height: 1080px; transform-origin: 0 0; overflow: hidden; background: #f4f4f2; font-family: Poppins, sans-serif; color: #1d1d1f;
+  filter: brightness(0.9) sepia(0.1); }   /* a screen in a warm room: a touch dimmer and warmer, as the render has it */
+.laptop-screen .bar { position: absolute; inset: 0 0 auto 0; height: 64px; background: #e4e4e2; }
+.laptop-screen .bar i { position: absolute; top: 24px; width: 16px; height: 16px; border-radius: 50%; background: #ff5f57; }
+.laptop-screen .bar i:nth-child(1) { left: 20px; }
+.laptop-screen .bar i:nth-child(2) { left: 46px; background: #febc2e; }
+.laptop-screen .bar i:nth-child(3) { left: 72px; background: #28c840; }
+.laptop-screen .url { position: absolute; left: 360px; top: 14px; width: 1000px; height: 36px; border-radius: 18px; background: #fff; color: #9a9a98; font-size: 20px; line-height: 36px; padding-left: 30px; font-weight: 500; }
+.laptop-screen .head b { position: absolute; left: 110px; top: 90px; font-weight: 800; font-size: 30px; }
+.laptop-screen nav span { position: absolute; top: 96px; font-size: 20px; color: #6e6e73; font-weight: 500; }
+.laptop-screen nav span:nth-child(1) { left: 1260px; }
+.laptop-screen nav span:nth-child(2) { left: 1390px; }
+.laptop-screen nav span:nth-child(3) { left: 1520px; }
+.laptop-screen nav em { position: absolute; left: 1600px; top: 94px; width: 90px; height: 36px; border-radius: 18px; background: #1f7a4d; animation: pulse 2.6s var(--ease) infinite; }
+.laptop-screen figure { position: absolute; margin: 0; overflow: hidden; }
+.laptop-screen figure img { width: 100%; height: 100%; object-fit: cover; animation: drift 18s ease-in-out infinite alternate; }
+.laptop-screen .glare { position: absolute; inset: 0; background: linear-gradient(115deg, rgba(255,214,170,0.14) 0%, rgba(255,214,170,0.04) 38%, rgba(255,255,255,0) 60%); }
+@keyframes drift { from { transform: scale(1.02) translate(0, 0); } to { transform: scale(1.1) translate(-2%, -1.5%); } }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.55; } }
+
+/* the room: the canvas and the display's layer, warped as one on the way into the laptop */
+.room { position: fixed; inset: 0; transform-origin: 0 0; }
+.laptop-screen { transition: opacity 0.6s var(--ease); }
+.laptop-screen.gone { opacity: 0; }
+/* the site in the laptop, live on its display (on a phone laid out at a laptop's size until the dive) */
+.inside-frame { position: absolute; left: 0; top: 0; border: 0; transform-origin: 0 0; background: #eadfc9; pointer-events: none; opacity: 0; transition: opacity 0.8s var(--ease); filter: brightness(0.82) sepia(0.08); }
+.inside-frame.shown { opacity: 1; }
+.inside-frame.live { visibility: visible; pointer-events: auto; opacity: 1; filter: none; }
+.dive-flash { position: fixed; inset: 0; z-index: 10; pointer-events: none; opacity: 0; background: radial-gradient(60% 60% at 50% 50%, #fff8ec 0%, #f6ead3 55%, #eadfc9 100%); }
+.enter-hint { position: fixed; left: 50%; bottom: 3.2vh; transform: translateX(-50%); margin: 0; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255, 246, 232, 0.86); text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35); white-space: nowrap; opacity: 0; transition: opacity 0.9s var(--ease) 1.4s; pointer-events: none; }
+body.ready .enter-hint { opacity: 1; }
+.enter-hint.gone, body.inside .enter-hint { opacity: 0 !important; transition-delay: 0s; }
+.enter-hint .key { display: inline-block; margin-right: 0.7em; padding: 3px 7px 2px; border: 1px solid rgba(255, 246, 232, 0.6); border-radius: 4px; letter-spacing: 0.1em; }
+
+@media (max-width: 640px) {
+  .mark { right: 20px; top: 22px; }
+  .roles { font-size: 9px; letter-spacing: 0.12em; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .laptop-screen figure img, .laptop-screen nav em { animation: none; }
+}
+
+/* ---- the splash: his signature, written by his hand on the warm paper of the site inside (main.js), then the sheet
+   lifts away up the screen, its foot curving and casting a soft shadow, and the room comes up out of a slight zoom */
+.splash { position: fixed; left: 0; top: 0; width: 100vw; height: 100vh; z-index: 40; display: grid; place-items: center; background: #f5e4ce; will-change: transform; }
+.splash { transform-origin: 0 0; }
+.splash-sig { width: 50vw; color: #3d2b15; margin-top: -4vh; }
+.splash-sig svg { display: block; width: 100%; height: auto; overflow: visible; }
+.splash.gone { visibility: hidden; }
+body.splashing .room { transform-origin: 50% 50%; transform: scale(1.045); }
+@media (max-width: 1079px) { .splash-sig { width: 86vw; margin-top: -6vh; } }
+
+
+/* the display's first screen until the site is on it: the site's own (inside.css .sig-sheet), at its laptop size */
+.laptop-screen .mock-sig { position: absolute; color: #3d2b15; }
+.laptop-screen .mock-sig svg { display: block; width: 100%; height: auto; overflow: visible; }
+.laptop-screen:has(.mock-sig) { background: #f5e4ce; }

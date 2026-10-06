@@ -1,0 +1,20 @@
+node_modules/
+dist/
+.vercel/
+.claude/
+__pycache__/
+.env*
+
+# render caches and old takes: gigabytes of .npy passes, rebuilt by tools/
+archive/
+blender/final/
+
+# other people's work, kept here only as reference; never published
+blender/illoca/
+blender/posters/
+tools/blender/assets/
+tools/ref-screen.png
+src/desk/ref/
+src/site/assets/
+# the room exported for Blender: its textures include the posters above
+blender/*.glb

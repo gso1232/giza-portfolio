@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en" data-palette="cozy">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Mohamed Samy — Sites that start on paper</title>
+    <meta name="description" content="Mohamed Samy draws every website by hand first, then builds it in 3D and code." />
+    <meta name="theme-color" content="#eadfc9" />
+  </head>
+  <body>
+    <!-- the first screen: his signature on plain paper, and its two words turning over, one after the other, to
+         what he is (Mohamed to web, Samy to designer) and back, until the page is scrolled; then the sheet lifts
+         away up the screen, its foot curving as it goes, and the site opens under it (main.js, sig) -->
+    <div class="sig-sheet" role="img" aria-label="Mohamed Samy, web designer">
+      <div class="sig">
+        <!-- each word a box that rolls forward a quarter turn: his signed word on its front, the trade on its top,
+             the signed word again behind (so it rolls on, the same way, back to his name) -->
+        <div class="sig-card sig-a">
+          <div class="sig-face f0"><svg class="sig-front" data-word="mohamed" aria-hidden="true"></svg></div>
+          <div class="sig-face f1"><span class="sig-back" aria-hidden="true">Web</span></div>
+          <div class="sig-face f2"><svg class="sig-front sig-again" data-word="mohamed" aria-hidden="true"></svg></div>
+        </div>
+        <div class="sig-card sig-b">
+          <div class="sig-face f0"><svg class="sig-front" data-word="samy" aria-hidden="true"></svg></div>
+          <div class="sig-face f1"><span class="sig-back" aria-hidden="true">Designer</span></div>
+          <div class="sig-face f2"><svg class="sig-front sig-again" data-word="samy" aria-hidden="true"></svg></div>
+        </div>
+      </div>
+      <button class="sig-cue" type="button"><span>scroll</span><i></i></button>
+      <div class="sig-curve" aria-hidden="true"></div>
+    </div>
+    <!-- The site inside the laptop. Its skeleton follows illoca.unseen.co: grid paper with a
+         window cut in it, the 3D story seen through the window and scrubbed by the scroll,
+         and one panel of text per beat that swings in beside it. -->
+    <div class="paper-bg"></div>
+    <canvas class="scene" aria-hidden="true"></canvas>
+
+    <!-- the paper around the window: four sheets, each clipped back to one edge of it -->
+    <div class="hole" aria-hidden="true">
+      <div class="hole-left"></div><div class="hole-right"></div><div class="hole-top"></div><div class="hole-bottom"></div>
+      <div class="hole-edge"></div>
+    </div>
+
+    <header>
+      <nav class="nav">
+        <a class="logo" href="#top" aria-label="Mohamed Samy, back to the top">
+          <svg viewBox="0 0 36 36" aria-hidden="true"><rect x="1" y="1" width="15" height="15" /><path d="M20 16 27.5 1 35 16Z" /><circle cx="8.5" cy="27.5" r="7.5" /><path d="M20 20h15v15H20z" class="o" /><path d="M22 33 33 22" class="o" /></svg>
+          <span>samy</span>
+        </a>
+        <ul>
+          <li><a class="roll" href="#work"><span><i>Work</i><i>Work</i></span></a></li>
+          <li><a class="roll" href="#letter"><span><i>Letter</i><i>Letter</i></span></a></li>
+          <li><a class="roll" href="#about"><span><i>About</i><i>About</i></span></a></li>
+          <li><a class="roll" href="#faqs"><span><i>FAQs</i><i>FAQs</i></span></a></li>
+        </ul>
+        <a class="cta" href="#contact"><b class="sq"><svg viewBox="0 0 20 20"><path d="M3 16 16 3M7 3h9v9" /></svg></b><span><i>Say hello</i><i>Say hello</i></span></a>
+      </nav>
+      <div class="coords" aria-hidden="true"><div><span>X</span> <em class="cx">0.00</em></div><div><span>Y</span> <em class="cy">0.00</em></div></div>
+      <a class="back" href="./">back to the desk</a>
+    </header>
+
+    <main>
+      <!-- the first screen: the title over the paper, the window below it -->
+      <div class="intro" id="top">
+        <div class="hero">
+          <span class="hero-left-mob">hand-made</span>
+          <h1 class="hero-title">
+            <span class="sr">Websites that start on paper</span>
+            <span class="hero-bg" aria-hidden="true">Websites that start on paper</span>
+            <span class="hero-fill" aria-hidden="true">Websites that start on paper</span>
+            <span class="hero-left" aria-hidden="true">hand-made</span>
+            <span class="hero-right" aria-hidden="true"><svg class="arrow" viewBox="0 0 40 14"><path d="M1 8.5c9-.6 22-1.3 36-.9M31 2.5l6.4 5.2-6.9 4.6" /></svg><span class="not"><i class="strike"></i>not</span><span>templates</span></span>
+          </h1>
+        </div>
+      </div>
+      <p class="subheading">I'm Mohamed Samy. I draw it first, then I build it. <b class="sq"><svg viewBox="0 0 20 20"><path d="m5 7 5 5 5-5" /></svg></b></p>
+      <div class="spacer" data-h="100" data-key="intro"></div>
+
+      <!-- 1 -->
+      <section class="feature left" data-n="1" aria-label="About, sketched">
+        <div class="spacer sec-in" data-h="200" data-hm="100"></div>
+        <div class="pin">
+          <div class="timing"></div>
+          <div class="panel-wrap"><div class="panel">
+            <div class="eyebrow"><b class="num">1</b><span>About, Sketched!</span><svg class="line" viewBox="0 0 300 6" preserveAspectRatio="none"><path d="M1 4.2c40-1.6 91-2.4 150-2.3 55 .1 104 .7 148 1.6" /></svg></div>
+            <h2 class="title"><span class="title-bg">Pencil First</span><span class="title-fill" aria-hidden="true">Pencil First</span></h2>
+            <p class="text">I'm Mohamed Samy, a software engineering student at the Egyptian Chinese University. Every site I make starts in pencil, and this one I drew as the Yellow Crane Tower, inspired by my university: a storey for each section. Move over the sheet and the clean plan shows through.</p>
+            <div class="buttons"><a class="btn" href="#work"><b class="sq"><svg viewBox="0 0 20 20"><path d="m6 4 7 6-7 6" /></svg></b><span class="btn-bg"><span class="btn-in">Hover the sheet</span></span></a></div>
+            <p class="chin"><svg viewBox="0 0 20 20"><path d="M3 3c1 7 5 11 13 13M16 16l-5 .6M16 16l-1.6-4.6" /></svg><span>follow the pencil</span></p>
+          </div></div>
+          <div class="hide" data-hm="150"></div>
+        </div>
+        <div class="after"></div>
+      </section>
+      <div class="spacer" data-h="500" data-hm="150" data-key="rise"></div>
+
+      <!-- 2 -->
+      <section class="feature right" data-n="2" aria-label="Site, built">
+        <div class="pin">
+          <div class="timing"></div>
+          <div class="panel-wrap"><div class="panel">
+            <div class="eyebrow"><b class="num">2</b><span>Site, Built!</span><svg class="line" viewBox="0 0 300 6" preserveAspectRatio="none"><path d="M1 3.6c52-1.9 97-2.2 149-1.7 54 .5 101 1.4 149 2.4" /></svg></div>
+            <h2 class="title tight"><span class="title-bg">Storey by Storey</span><span class="title-fill" aria-hidden="true">Storey by Storey</span></h2>
+            <p class="text">The plan stands up as Wuhan's Yellow Crane Tower at 1:120, the Chinese half of my university's name. The Hero is the ground storey, About sits above it, my work fills the middle storeys and Contact waits under the crown.</p>
+            <div class="buttons"><a class="btn" href="#work"><b class="sq"><svg viewBox="0 0 20 20"><path d="m6 4 7 6-7 6" /></svg></b><span class="btn-bg"><span class="btn-in">See the storeys</span></span></a></div>
+          </div></div>
+          <div class="hide"></div>
+        </div>
+        <div class="after"></div>
+      </section>
+      <div class="spacer" data-h="100" data-hm="150" data-key="orbit"></div>
+
+      <!-- 3, and the toy: their Generate box -->
+      <section class="feature left" data-n="3" aria-label="Work, opened">
+        <div class="pin">
+          <div class="timing"></div>
+          <div class="panel-wrap"><div class="panel">
+            <div class="eyebrow"><b class="num">3</b><span>Work, Opened!</span><svg class="line" viewBox="0 0 300 6" preserveAspectRatio="none"><path d="M1 2.6c47 1.2 99 1.8 151 1.6 50-.2 99-1.1 147-2.2" /></svg></div>
+            <h2 class="title tight"><span class="title-bg">The Work Storey</span><span class="title-fill" aria-hidden="true">The Work Storey</span></h2>
+            <p class="text">Run the command and the top of the tower lifts off the third storey: Duriza, Synergy, Sondos, Adham and Ganeeh, each one on its own stand.</p>
+            <div class="buttons"><a class="btn" href="#work"><b class="sq"><svg viewBox="0 0 20 20"><path d="m6 4 7 6-7 6" /></svg></b><span class="btn-bg"><span class="btn-in">Run it below</span></span></a></div>
+          </div></div>
+          <div class="hide" data-hm="400"></div>
+          <div class="toy cmd" aria-label="Try it: run the command">
+            <div class="toy-row"><span class="cmd-in"><b>&gt;</b><span class="cmd-text"></span><i class="caret"></i></span><button class="btn-paper run" type="button"><b class="sq"><svg viewBox="0 0 20 20"><path d="m6 4 8 6-8 6Z" /></svg></b><span><i>Run</i><i>Run</i></span></button></div>
+          </div>
+        </div>
+        <div class="after"></div>
+      </section>
+      <div class="spacer" data-h="400" data-hm="150" data-key="devices"></div>
+
+      <!-- 4 -->
+      <section class="feature right" data-n="4" aria-label="Feedback, applied">
+        <div class="pin">
+          <div class="timing"></div>
+          <div class="panel-wrap"><div class="panel">
+            <div class="eyebrow"><b class="num">4</b><span>Feedback, Applied!</span><svg class="line" viewBox="0 0 300 6" preserveAspectRatio="none"><path d="M1 4c46-1 98-2.8 150-2.6 51 .2 99 1.3 148 2" /></svg></div>
+            <h2 class="title"><span class="title-bg">Red Pen</span><span class="title-fill" aria-hidden="true">Red Pen</span></h2>
+            <p class="text">My teammate marks the Work page in red: two to a row. The gallery lays itself out again, bigger, the way the page will.</p>
+            <div class="buttons"><a class="btn" href="#work"><b class="sq"><svg viewBox="0 0 20 20"><path d="m6 4 7 6-7 6" /></svg></b><span class="btn-bg"><span class="btn-in">See the change</span></span></a></div>
+          </div></div>
+          <div class="hide" data-h="124"></div>
+        </div>
+        <div class="after"></div>
+      </section>
+      <div class="spacer" data-h="326" data-hm="150" data-key="projects"></div>
+
+      <!-- 5, centred between two rules -->
+      <section class="feature left" data-n="5" aria-label="Work, shipped">
+        <div class="pin">
+          <div class="timing"></div>
+          <div class="panel-wrap"><div class="panel">
+            <div class="eyebrow"><b class="num">5</b><span>Work, Shipped!</span><svg class="line" viewBox="0 0 300 6" preserveAspectRatio="none"><path d="M1 3c50 1.4 99 1.5 150 .8 50-.7 99-1.5 148-1.1" /></svg></div>
+            <h2 class="title tight"><span class="title-bg">Real Facades</span><span class="title-fill" aria-hidden="true">Real Facades</span></h2>
+            <p class="text">Then the real tower comes through: yellow roofs, red columns, and every panel a page of the site, every storey one of my projects. The tablet holds all of their screens.</p>
+            <div class="buttons"><a class="btn" href="#work"><b class="sq"><svg viewBox="0 0 20 20"><path d="m6 4 7 6-7 6" /></svg></b><span class="btn-bg"><span class="btn-in">See the work</span></span></a>
+              <button class="btn night-toggle" type="button" aria-pressed="false"><b class="sq"><svg viewBox="0 0 20 20"><path d="M14.5 12.6A6 6 0 0 1 7.4 5.5a6 6 0 1 0 7.1 7.1Z" /></svg></b><span class="btn-bg"><span class="btn-in">Dark mode</span></span></button></div>
+          </div></div>
+          <div class="hide" data-h="297"></div>
+        </div>
+        <div class="after" style="height: 27dvh"></div>
+      </section>
+
+      <!-- the open letter: the window opens to the whole screen, the sheet slides up over it -->
+      <section class="letter" id="letter">
+        <div class="letter-head">
+          <p class="to">to whoever opens this laptop</p>
+          <h2 class="title"><span class="title-bg">An Open Letter</span><span class="title-fill" aria-hidden="true">An Open Letter</span></h2>
+        </div>
+        <div class="letter-run">
+          <!-- the envelope it comes out of: its back behind the sheet, its pocket before it -->
+          <i class="env env-back" aria-hidden="true"></i>
+          <article class="sheet letter-sheet">
+            <p><strong>To whoever opens this laptop,</strong></p>
+            <p>I never liked websites that feel like templates. The ones I remember feel made by hand: someone chose every line, every pause, every colour.</p>
+            <p>So that is how I work. I start with a pencil, not a framework. I sketch until the idea is clear, then I build it in 3D and in code until it moves the way it moved in my head.</p>
+            <p>I care about the details nobody asks for: how quickly the first screen shows up on a cheap phone, how a page feels when you scroll it slowly, how the light falls across a desk at five in the afternoon.</p>
+            <p>Every project here was built for someone real, and every one taught me something the last one couldn't.</p>
+            <p>If you have an idea that deserves to feel real, I would love to draw it with you.</p>
+            <p><strong>Mohamed Samy</strong></p>
+          </article>
+          <i class="env env-front" aria-hidden="true"></i>
+        </div>
+      </section>
+
+      <!-- the work, laid out as their cards, fanned -->
+      <section class="work" id="work">
+        <div class="folder">
+          <h2 class="tab"><span>Work</span></h2>
+          <div class="folder-body">
+            <h3 class="lead">Every one of them started in <span class="emph">a dot-grid notebook</span>.</h3>
+            <div class="cards">
+              <article class="card card--white">
+                <h2>Duriza</h2>
+                <h3>A jewellery store, made in Egypt</h3>
+                <ul class="ticks"><li>Shop, product and cart, built for phones first</li><li>WhatsApp on every page</li><li>Delivery across Egypt</li></ul>
+                <a class="btn-paper" href="https://durizaeg.com" target="_blank" rel="noopener"><b class="sq"><svg viewBox="0 0 20 20"><path d="M4 16 15 5m-4 0h4v4" /></svg></b><span><i>Visit</i><i>Visit</i></span></a>
+              </article>
+              <article class="card card--accent">
+                <h2>Synergy</h2>
+                <h3>An insurance group, online</h3>
+                <ul class="ticks light"><li>English and Spanish</li><li>Quotes and agent sign-ups</li><li>Clear on any screen</li></ul>
+                <a class="btn-paper" href="https://fflsynergy.com" target="_blank" rel="noopener"><b class="sq"><svg viewBox="0 0 20 20"><path d="M4 16 15 5m-4 0h4v4" /></svg></b><span><i>Visit</i><i>Visit</i></span></a>
+              </article>
+              <article class="card card--cream">
+                <h2>Nile Piastirie</h2>
+                <h3>A Cairo pâtisserie's e-shop</h3>
+                <ul class="ticks"><li>Collections: pastries, chocolates, books</li><li>Products, cart and events</li><li>Courier delivery, ordered by 8 PM</li></ul>
+                <a class="btn-paper" href="https://sweet-success-studio-main-snowy.vercel.app" target="_blank" rel="noopener"><b class="sq"><svg viewBox="0 0 20 20"><path d="M4 16 15 5m-4 0h4v4" /></svg></b><span><i>Visit</i><i>Visit</i></span></a>
+              </article>
+              <article class="card card--deep">
+                <h2>And more</h2>
+                <h3>Portfolios and games</h3>
+                <ul class="ticks light"><li>Sondos, a scenographer's portfolio</li><li>Adham, an artist's portfolio</li><li>Ganeeh, Egyptian Monopoly in 3D</li></ul>
+                <div class="more">
+                  <button class="btn-paper more-btn" type="button" aria-expanded="false" aria-controls="more-list"><b class="sq"><svg viewBox="0 0 20 20"><path d="M4 16 15 5m-4 0h4v4" /></svg></b><span><i>See more</i><i>See more</i></span></button>
+                  <ul class="more-list" id="more-list" hidden>
+                    <li><a href="https://sondos-ten.vercel.app" target="_blank" rel="noopener"><b>Sondos</b><span>A scenographer's portfolio</span></a></li>
+                    <li><a href="https://adham-assem.vercel.app" target="_blank" rel="noopener"><b>Adham</b><span>An artist's portfolio</span></a></li>
+                    <li><a href="https://monopoly-eg.vercel.app" target="_blank" rel="noopener"><b>Ganeeh</b><span>Egyptian Monopoly in 3D</span></a></li>
+                  </ul>
+                </div>
+              </article>
+            </div>
+            <p class="foot-note">Each one sketched, wireframed, designed, built and tested on real phones.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- who he is, in a folder of its own (the letter says how he works; this says who and with what) -->
+      <section class="about" id="about">
+        <div class="folder">
+          <h2 class="tab"><span>About</span></h2>
+          <div class="folder-body about-grid">
+            <div class="about-side">
+              <p class="scribble">hello!</p>
+              <h3 class="big">I'm Mohamed Samy.</h3>
+              <p class="about-text">A software engineering student at the Egyptian Chinese University in Cairo, and a web designer. I take a site from the first pencil line to the live page: the layout, the type, the motion, the 3D and the code.</p>
+              <a class="btn-paper" href="#contact"><b class="sq"><svg viewBox="0 0 20 20"><path d="M4 16 15 5m-4 0h4v4" /></svg></b><span><i>Work with me</i><i>Work with me</i></span></a>
+            </div>
+            <div class="about-cols">
+              <div class="about-col"><h4>What I do</h4><ul class="ticks"><li>Web design</li><li>UI and UX</li><li>Front-end development</li><li>3D and motion for the web</li></ul></div>
+              <div class="about-col"><h4>What I use</h4><ul class="ticks"><li>Pencil and a dot-grid notebook</li><li>Figma</li><li>React and Next.js</li><li>three.js and Blender</li></ul></div>
+              <ol class="about-steps" aria-label="How a site gets made">
+                <li><b>01</b>Sketch</li><li><b>02</b>Wireframe</li><li><b>03</b>Design</li><li><b>04</b>Build</li><li><b>05</b>Test on real phones</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="faqs" id="faqs">
+        <div class="folder">
+          <h2 class="tab"><span>FAQs</span></h2>
+          <div class="folder-body faq-grid">
+            <div class="faq-side">
+              <p class="scribble"><i class="strike"></i>curious?<i class="strike"></i></p>
+              <h3 class="big">Frequently Asked Questions</h3>
+              <a class="btn-paper" href="#contact"><b class="sq"><svg viewBox="0 0 20 20"><path d="M4 16 15 5m-4 0h4v4" /></svg></b><span><i>Say hello</i><i>Say hello</i></span></a>
+            </div>
+            <div class="faq-list">
+              <button class="q" aria-expanded="false">What do you build?<span class="acc"><svg viewBox="0 0 12 8"><path d="m1 1.5 5 5 5-5" /></svg></span></button>
+              <div class="a"><p>Websites and web experiences: portfolios, interactive 3D pages and browser games, from the first sketch to the live site.</p></div>
+              <button class="q" aria-expanded="false">Which tools do you use?<span class="acc"><svg viewBox="0 0 12 8"><path d="m1 1.5 5 5 5-5" /></svg></span></button>
+              <div class="a"><p>A pencil and a dot-grid notebook first. Then Figma for the screens, React and Next.js for the code, and Blender and three.js when a page needs 3D.</p></div>
+              <button class="q" aria-expanded="false">Do you start from a template?<span class="acc"><svg viewBox="0 0 12 8"><path d="m1 1.5 5 5 5-5" /></svg></span></button>
+              <div class="a"><p>Never. Every page starts as a blank sheet, so it fits the person it is for.</p></div>
+              <button class="q" aria-expanded="false">Are you taking on projects?<span class="acc"><svg viewBox="0 0 12 8"><path d="m1 1.5 5 5 5-5" /></svg></span></button>
+              <div class="a"><p>Yes. Tell me about your idea and I will answer with a sketch.</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="contact">
+      <div class="footer">
+        <p class="foot-line">Websites drawn by hand,<br />built for the web.</p>
+        <div class="foot-cols">
+          <div><h3>Quick links</h3><ul><li><a class="roll" href="#top"><span><i>Home</i><i>Home</i></span></a></li><li><a class="roll" href="#work"><span><i>Work</i><i>Work</i></span></a></li><li><a class="roll" href="#letter"><span><i>Letter</i><i>Letter</i></span></a></li></ul></div>
+          <div><h3>Connect</h3><ul><li><a class="roll" href="#"><span><i>LinkedIn</i><i>LinkedIn</i></span></a></li><li><a class="roll" href="#"><span><i>GitHub</i><i>GitHub</i></span></a></li><li><a class="roll" href="#"><span><i>Instagram</i><i>Instagram</i></span></a></li></ul></div>
+        </div>
+        <p class="copy">© 2026 Mohamed Samy <a href="./">Back to the desk</a></p>
+      </div>
+    </footer>
+
+    <div class="thumb" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+    <script type="module" src="./src/inside/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Timeline preview</title>
+<style>
+  html, body { margin: 0; background: #111; }
+  canvas { display: block; width: 100vw; height: auto; }
+</style>
+</head>
+<body>
+<canvas id="c" width="1600" height="1226"></canvas>
+<script type="module">
+  import * as THREE from 'three';
+  import '@fontsource/jetbrains-mono/latin-600.css';
+  import '@fontsource/jetbrains-mono/latin-800.css';
+  import { Timeline, FPS, LOOP } from '../src/site/timeline.js';
+
+  // the reel's frames, sent to the local sink as tl-<frame>.jpg, to set beside the reference's
+  const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('c'), antialias: false, preserveDrawingBuffer: true });
+  renderer.setPixelRatio(1);
+  renderer.setSize(1600, 1226, false);
+  const tl = new Timeline(renderer, '/plate/plate-wide.jpg');
+  if (location.search.includes('export')) tl.u.uGrain.value = 0;
+  let hold = null, start = performance.now();
+  const loop = () => { tl.prepare(); if (hold == null) { const s = (performance.now() - start) / 1000; tl.render(s % LOOP, s, null); } requestAnimationFrame(loop); };
+  requestAnimationFrame(loop);
+  window.__tl = {
+    tl,
+    at: (f) => { hold = f; tl.render((f + 0.5) / FPS, f / FPS, null); },
+    play: () => { hold = null; start = performance.now(); },
+    ready: () => tl.ready,
+    save: async (frames, tag = 'tl') => {
+      while (!tl.ready) await new Promise((r) => requestAnimationFrame(r));
+      for (const f of frames) {
+        hold = f;
+        tl.render((f + 0.5) / FPS, f / FPS, null);
+        await fetch(`http://127.0.0.1:5199/${tag}-${String(f).padStart(3, '0')}.jpg`, { method: 'POST', body: renderer.domElement.toDataURL('image/jpeg', 0.9) });
+      }
+      return frames.length;
+    },
+  };
+</script>
+</body>
+</html>

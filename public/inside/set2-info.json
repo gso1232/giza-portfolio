@@ -1,0 +1,165 @@
+{
+ "sun": [
+  0.7435944080352783,
+  -0.5292248725891113,
+  -0.4086419641971588
+ ],
+ "desk": 0.762,
+ "notes": [
+  {
+   "cell": 0,
+   "text": "Checkout flow",
+   "colour": "peach",
+   "where": "kanban"
+  },
+  {
+   "cell": 1,
+   "text": "Dark mode",
+   "colour": "yellow",
+   "where": "kanban"
+  },
+  {
+   "cell": 2,
+   "text": "A11y audit",
+   "colour": "pink",
+   "where": "kanban"
+  },
+  {
+   "cell": 3,
+   "text": "Image CDN",
+   "colour": "yellow",
+   "where": "kanban"
+  },
+  {
+   "cell": 4,
+   "text": "Search",
+   "colour": "peach",
+   "where": "kanban"
+  },
+  {
+   "cell": 5,
+   "text": "Wishlist",
+   "colour": "pink",
+   "where": "kanban"
+  },
+  {
+   "cell": 6,
+   "text": "Product page",
+   "colour": "peach",
+   "where": "kanban"
+  },
+  {
+   "cell": 7,
+   "text": "Cart API",
+   "colour": "pink",
+   "where": "kanban"
+  },
+  {
+   "cell": 8,
+   "text": "Figma > code",
+   "colour": "yellow",
+   "where": "kanban"
+  },
+  {
+   "cell": 9,
+   "text": "Order emails",
+   "colour": "peach",
+   "where": "kanban"
+  },
+  {
+   "cell": 10,
+   "text": "Sitemap",
+   "colour": "yellow",
+   "where": "kanban"
+  },
+  {
+   "cell": 11,
+   "text": "Wireframes",
+   "colour": "peach",
+   "where": "kanban"
+  },
+  {
+   "cell": 12,
+   "text": "Design tokens",
+   "colour": "pink",
+   "where": "kanban"
+  },
+  {
+   "cell": 13,
+   "text": "Auth",
+   "colour": "yellow",
+   "where": "kanban"
+  },
+  {
+   "cell": 14,
+   "text": "User flow",
+   "colour": "peach",
+   "where": "kanban"
+  },
+  {
+   "cell": 15,
+   "text": "Logo",
+   "colour": "pink",
+   "where": "kanban"
+  },
+  {
+   "cell": 16,
+   "text": "Hosting",
+   "colour": "yellow",
+   "where": "kanban"
+  },
+  {
+   "cell": 17,
+   "text": "Splash",
+   "colour": "yellow",
+   "where": "flow"
+  },
+  {
+   "cell": 18,
+   "text": "Home",
+   "colour": "peach",
+   "where": "flow"
+  },
+  {
+   "cell": 19,
+   "text": "Shop",
+   "colour": "peach",
+   "where": "flow"
+  },
+  {
+   "cell": 20,
+   "text": "Product",
+   "colour": "peach",
+   "where": "flow"
+  },
+  {
+   "cell": 21,
+   "text": "Cart",
+   "colour": "pink",
+   "where": "flow"
+  },
+  {
+   "cell": 22,
+   "text": "Checkout",
+   "colour": "pink",
+   "where": "flow"
+  }
+ ],
+ "window": {
+  "x": -3.08,
+  "z0": -2.71,
+  "z1": 6.04,
+  "y0": 0.33,
+  "y1": 3.29,
+  "n": 6,
+  "w": 1.26,
+  "gap": 0.24
+ },
+ "room": {
+  "x0": -3.08,
+  "x1": 6.92,
+  "z0": -4.406,
+  "z1": 14.446,
+  "h": 4.0
+ }
+}
